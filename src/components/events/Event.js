@@ -11,9 +11,9 @@ export const Event = ({ event }) => {
                 </Link>
             </h3>
 
-            <div className="event_date">{event.date}</div>
+            <div className="event_date"> {new Date(event.date).toLocaleDateString()}</div>
 
-            <div className="event_budget">{event.budget}</div>
+            <div className="event_budget">${event.budget}</div>
         </section>
     )
 }
