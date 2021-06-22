@@ -7,13 +7,24 @@ export const ProductProvider = (props) => {
 
 
     const getProducts = () => {
-        return fetch("http://localhost:8000/products", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("planb_vendorId")}`
-            }
-        })
-            .then(response => response.json())
-            .then(setProducts)
+        if (localStorage.getItem("planb_vendorId")) {
+            return fetch("http://localhost:8000/products", {
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem("planb_vendorId")}`
+                }
+            })
+                .then(response => response.json())
+                .then(setProducts)
+        } else {
+            return fetch("http://localhost:8000/products", {
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
+                }
+            })
+                .then(response => response.json())
+                .then(setProducts)
+        }
+
     }
 
     const getProductById = (id) => {
