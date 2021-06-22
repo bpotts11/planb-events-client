@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import { EventContext } from "./EventProvider"
 import { Event } from "./Event"
 import { useHistory } from "react-router-dom"
 
 // this is a list of all the events
-export const EventList = (props) => {
+export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
     // const currentUser = parseInt(localStorage.getItem('planb_customerId'))
     const history = useHistory()
@@ -15,7 +15,7 @@ export const EventList = (props) => {
     }, []);
 
     return (
-        <div className="post__component">
+        <div className="event__component">
             <h1>My Events</h1>
 
             <button onClick={() => history.push("/events/create")}>

@@ -3,7 +3,7 @@ import { EventContext } from "./EventProvider"
 import { useHistory, useParams } from 'react-router-dom'
 
 export const EventForm = () => {
-    const { events, getEvents, getEventById, addEvent, updateEvent } = useContext(EventContext)
+    const { getEvents, getEventById, addEvent, updateEvent } = useContext(EventContext)
 
     const [customerEvent, setEvent] = useState({
         "name": "",
@@ -24,7 +24,7 @@ export const EventForm = () => {
         /* When changing a state object or array, always create a new one and change state instead of modifying current one */
         const newEvent = { ...customerEvent }
         let selectedVal = event.target.value
-        newEvent[event.target.id] = selectedVal
+        newEvent[event.target.name] = selectedVal
         setEvent(newEvent)
     }
 
@@ -68,12 +68,12 @@ export const EventForm = () => {
     }, [])
 
     return (
-        <form className="post__form">
+        <form className="event__form">
             <h2 className="form__title">{eventId ? "Edit Event" : "Create Event"}</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name of Event: </label>
-                    <input value={customerEvent.name} type="text" name="name" id="name" required autoFocus className="form-control"
+                    <input value={customerEvent.name} type="text" name="name" required autoFocus className="form-control"
                         placeholder="Event Name"
                         onChange={handleControlledInputChange}
                     />
@@ -83,7 +83,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date of Event:</label>
-                    <input value={customerEvent.date} type="date" name="date" id="date" required className="form-control"
+                    <input value={customerEvent.date} type="date" name="date" required className="form-control"
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -92,7 +92,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="budget">Budget: </label>
-                    <input value={customerEvent.budget} type="text" name="budget" id="budget" required className="form-control"
+                    <input value={customerEvent.budget} type="text" name="budget" required className="form-control"
                         placeholder="Budget"
                         onChange={handleControlledInputChange}
                     />
