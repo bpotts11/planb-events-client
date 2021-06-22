@@ -1,12 +1,10 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import { ProductContext } from "./ProductProvider"
 import { Product } from "./Product"
 import { useHistory } from "react-router-dom"
 
-// this is a list of all the products
 export const ProductList = () => {
     const { products, getProducts } = useContext(ProductContext)
-    // const currentUser = parseInt(localStorage.getItem('planb_vendorId'))
     const history = useHistory()
 
     // Empty dependency array - useEffect only runs after first render

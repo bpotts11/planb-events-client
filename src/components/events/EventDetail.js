@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
 import { EventContext } from "./EventProvider"
-import { useHistory, useParams } from "react-router-dom"
+import { ProductContext } from "../products/ProductProvider"
+import { Link, useHistory, useParams } from "react-router-dom"
 
 export const EventDetail = () => {
     const { getEventById, deleteEvent } = useContext(EventContext)
+    const { getProducts } = useContext(ProductContext)
     const [event, setEvent] = useState({})
     const { eventId } = useParams();
     const history = useHistory()
@@ -11,12 +13,12 @@ export const EventDetail = () => {
 
 
     useEffect(() => {
-        getEventById(eventId)
+        getProducts()
+            .then(() => getEventById(eventId))
             .then((response) => {
                 setEvent(response)
             })
     }, [])
-
 
     const handleDeleteWarning = () => {
         deleteWarning.current.showModal()
@@ -31,7 +33,6 @@ export const EventDetail = () => {
         handleCloseModal()
         history.push('/customer')
     }
-
     return (
 
         <section className="event">
@@ -39,8 +40,11 @@ export const EventDetail = () => {
             <h3 className="event_name">{event.name}</h3>
             <div className="event_date">Date: {new Date(event.date).toLocaleDateString()}</div>
             <div className="event_budget">${event.budget}</div>
+            <Link to={`/events/detail/${event.id}/vendor_list`}>
+                Add
+            </Link>
             <ul className="event_products">
-                {event.products?.map(product => <li key={product.id}>{product.name}</li>)}
+                {event.products?.map(product => <li key={product?.id}>{product?.name} {product?.price}</li>)}
             </ul>
 
             <dialog className="dialog dialog--auth" ref={deleteWarning}>
@@ -49,7 +53,7 @@ export const EventDetail = () => {
                 <button className="button--close" onClick={handleClickDelete}>Confirm</button>
             </dialog>
 
-            <button className="btn btn-3" id={event.id}
+            <button className="btn btn-3" id={event?.id}
                 onClick={handleDeleteWarning}>Delete</button>
 
             <button onClick={() => { history.push(`/events/edit/${event.id}`) }}>Edit</button>

@@ -3,10 +3,8 @@ import { EventContext } from "./EventProvider"
 import { Event } from "./Event"
 import { useHistory } from "react-router-dom"
 
-// this is a list of all the events
 export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
-    // const currentUser = parseInt(localStorage.getItem('planb_customerId'))
     const history = useHistory()
 
     // Empty dependency array - useEffect only runs after first render

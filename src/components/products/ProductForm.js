@@ -41,14 +41,14 @@ export const ProductForm = () => {
                     updateProduct({
                         id: vendorProduct.id,
                         name: vendorProduct.name,
-                        price: vendorProduct.price,
+                        price: parseInt(vendorProduct.price),
                         description: vendorProduct.description
                     })
                         .then(() => history.push('/vendor'))
                     :
                     addProduct({
                         name: vendorProduct.name,
-                        price: vendorProduct.price,
+                        price: parseInt(vendorProduct.price),
                         description: vendorProduct.description
                     })
                         .then(() => history.push('/vendor'))
