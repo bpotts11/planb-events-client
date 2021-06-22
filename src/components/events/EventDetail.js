@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import { EventContext } from "./EventProvider"
 import { useHistory, useParams } from "react-router-dom"
 
-export const EventDetail = (props) => {
+export const EventDetail = () => {
     const { getEventById, deleteEvent } = useContext(EventContext)
     const [event, setEvent] = useState({})
     const { eventId } = useParams();
@@ -18,7 +18,7 @@ export const EventDetail = (props) => {
     }, [])
 
 
-    const handleDeleteWarning = event => {
+    const handleDeleteWarning = () => {
         deleteWarning.current.showModal()
     }
 
@@ -36,12 +36,13 @@ export const EventDetail = (props) => {
 
         <section className="event">
 
-            <h3 className="event_title">{event.name}</h3>
+            <h3 className="event_name">{event.name}</h3>
             <div className="event_date">Date: {new Date(event.date).toLocaleDateString()}</div>
             <div className="event_budget">${event.budget}</div>
             <ul className="event_products">
                 {event.products?.map(product => <li key={product.id}>{product.name}</li>)}
             </ul>
+
             <dialog className="dialog dialog--auth" ref={deleteWarning}>
                 <div>Are you sure you want to delete this event?</div>
                 <button className="button--close" onClick={handleCloseModal}>Cancel</button>
