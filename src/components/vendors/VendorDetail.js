@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { VendorContext } from "./VendorProvider"
 import { ProductContext } from "../products/ProductProvider"
 import { useHistory, useParams } from "react-router-dom"
@@ -15,12 +15,12 @@ export const VendorDetail = () => {
 
     const vendorProducts = products.filter(products => parseInt(vendorId) === products.vendor.id)
 
-    const handleAddProduct = (e, i) => {
+    const handleAddProduct = (e, prod) => {
         e.preventDefault()
 
         addEventProduct({
             eventId: parseInt(eventId),
-            productId: parseInt(i)
+            productId: parseInt(prod)
         })
             .then(() => history.push(`/events/detail/${eventId}`))
     }
@@ -41,14 +41,16 @@ export const VendorDetail = () => {
             <h3 className="vendor_business_name">{vendor.business_name}</h3>
             <div className="vendor_about">{vendor.about}</div>
             <div className="vendor_location">{vendor.address} {vendor.city}, {vendor.state}</div>
-            <ul className="vendor_products">
-                {vendorProducts?.map(product => <li key={product?.id}>{product?.name} {product?.price}
-                    <div>
+            <div className="vendor_products">
+                {vendorProducts?.map(product =>
+                    <div key={product?.id}>
+                        <h4>{product?.name} </h4>
+                        <div>${product?.price}</div>
                         <button className="btn btn-primary"
                             onClick={(e) => handleAddProduct(e, product.id)}>
                             Add</button>
-                    </div></li>)}
-            </ul>
+                    </div>)}
+            </div>
         </section >
     )
 }

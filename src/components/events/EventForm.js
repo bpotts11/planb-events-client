@@ -41,14 +41,14 @@ export const EventForm = () => {
                         id: customerEvent.id,
                         name: customerEvent.name,
                         date: customerEvent.date,
-                        budget: customerEvent.budget
+                        budget: parseInt(customerEvent.budget)
                     })
                         .then(() => history.push('/customer'))
                     :
                     addEvent({
                         name: customerEvent.name,
                         date: customerEvent.date,
-                        budget: customerEvent.budget
+                        budget: parseInt(customerEvent.budget)
                     })
                         .then(() => history.push('/customer'))
             }
