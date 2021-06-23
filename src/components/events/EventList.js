@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 
 export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
+    // const { customers } = useContext(CustomerContext)
     const history = useHistory()
 
     // Empty dependency array - useEffect only runs after first render

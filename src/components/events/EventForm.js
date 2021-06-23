@@ -3,13 +3,7 @@ import { EventContext } from "./EventProvider"
 import { useHistory, useParams } from 'react-router-dom'
 
 export const EventForm = () => {
-    const { getEvents, getEventById, addEvent, updateEvent } = useContext(EventContext)
-
-    const [customerEvent, setEvent] = useState({
-        "name": "",
-        "date": "",
-        "budget": ""
-    })
+    const { getEvents, getEventById, addEvent, updateEvent, event, setEvent } = useContext(EventContext)
 
     const [isLoading, setIsLoading] = useState(true);
     const { eventId } = useParams();
@@ -22,7 +16,7 @@ export const EventForm = () => {
 
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array, always create a new one and change state instead of modifying current one */
-        const newEvent = { ...customerEvent }
+        const newEvent = { ...event }
         let selectedVal = event.target.value
         newEvent[event.target.name] = selectedVal
         setEvent(newEvent)
@@ -30,7 +24,7 @@ export const EventForm = () => {
 
     const HandleSave = (e) => {
         e.preventDefault()
-        const eventName = customerEvent.name
+        const eventName = event.name
         if (eventName === "") {
             window.alert("Please enter a name")
         } else {
@@ -38,17 +32,17 @@ export const EventForm = () => {
             {
                 eventId ?
                     updateEvent({
-                        id: customerEvent.id,
-                        name: customerEvent.name,
-                        date: customerEvent.date,
-                        budget: parseInt(customerEvent.budget)
+                        id: event.id,
+                        name: event.name,
+                        date: event.date,
+                        budget: parseInt(event.budget)
                     })
                         .then(() => history.push('/customer'))
                     :
                     addEvent({
-                        name: customerEvent.name,
-                        date: customerEvent.date,
-                        budget: parseInt(customerEvent.budget)
+                        name: event.name,
+                        date: event.date,
+                        budget: parseInt(event.budget)
                     })
                         .then(() => history.push('/customer'))
             }
@@ -58,10 +52,8 @@ export const EventForm = () => {
     useEffect(() => {
         if (eventId) {
             getEventById(eventId)
-                .then(event => {
-                    setEvent(event)
-                    setIsLoading(false)
-                })
+                .then(() => setIsLoading(false)
+                )
         } else {
             setIsLoading(false)
         }
@@ -73,7 +65,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name of Event: </label>
-                    <input value={customerEvent.name} type="text" name="name" required autoFocus className="form-control"
+                    <input value={event?.name} type="text" name="name" required autoFocus className="form-control"
                         placeholder="Event Name"
                         onChange={handleControlledInputChange}
                     />
@@ -83,7 +75,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date of Event:</label>
-                    <input value={customerEvent.date} type="date" name="date" required className="form-control"
+                    <input value={event?.date} type="date" name="date" required className="form-control"
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -92,7 +84,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="budget">Budget: </label>
-                    <input value={customerEvent.budget} type="text" name="budget" required className="form-control"
+                    <input value={event?.budget} type="text" name="budget" required className="form-control"
                         placeholder="Budget"
                         onChange={handleControlledInputChange}
                     />
