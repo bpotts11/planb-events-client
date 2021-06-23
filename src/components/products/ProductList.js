@@ -17,7 +17,7 @@ export const ProductList = () => {
             <h1>My Products</h1>
 
             <button onClick={() => history.push("/products/create")}>
-                Add Product
+                New Product
             </button>
 
             <div className="products">

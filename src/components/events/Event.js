@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export const Event = ({ event }) => {
+    const eventTotalCost = event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b)
 
     return (
         <section className="event">
@@ -13,7 +14,7 @@ export const Event = ({ event }) => {
 
             <div className="event_date"> {new Date(event.date).toLocaleDateString()}</div>
 
-            <div className="event_budget">${event.budget}</div>
+            <div className="event_budget">${eventTotalCost} spent of ${event.budget} budget</div>
         </section>
     )
 }

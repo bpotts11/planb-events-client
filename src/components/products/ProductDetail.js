@@ -38,7 +38,7 @@ export const ProductDetail = () => {
 
             <h3 className="product_name">{product.name}</h3>
             <div className="product_price">${product.price}</div>
-            <div className="product_description">Date:{product.description}</div>
+            <div className="product_description">{product.description}</div>
 
             <dialog className="dialog dialog--auth" ref={deleteWarning}>
                 <div>Are you sure you want to delete this product?</div>
@@ -46,10 +46,10 @@ export const ProductDetail = () => {
                 <button className="button--close" onClick={handleClickDelete}>Confirm</button>
             </dialog>
 
+            <button onClick={() => { history.push(`/products/edit/${product.id}`) }}>Edit</button>
             <button className="btn btn-3" id={product.id}
                 onClick={handleDeleteWarning}>Delete</button>
 
-            <button onClick={() => { history.push(`/products/edit/${product.id}`) }}>Edit</button>
 
         </section>
     )
