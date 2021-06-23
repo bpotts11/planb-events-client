@@ -5,10 +5,9 @@ import { Link, useHistory, useParams } from "react-router-dom"
 import { EventProductContext } from "../vendors/EventProductProvider"
 
 export const EventDetail = () => {
-    const { getEventById, deleteEvent } = useContext(EventContext)
+    const { getEventById, deleteEvent, event } = useContext(EventContext)
     const { deleteEventProduct } = useContext(EventProductContext)
     const { getProducts } = useContext(ProductContext)
-    const [event, setEvent] = useState({})
     const { eventId } = useParams();
     const history = useHistory()
     const deleteWarning = useRef()
@@ -16,9 +15,6 @@ export const EventDetail = () => {
     useEffect(() => {
         getProducts()
             .then(() => getEventById(eventId))
-            .then((response) => {
-                setEvent(response)
-            })
     }, [])
 
     const handleDeleteWarning = () => {
@@ -37,13 +33,13 @@ export const EventDetail = () => {
 
 
 
-    // const handleRemove = (prod) => {
-    //     deleteEventProduct(prod)
-    //         .then(() => history.push(`/events/detail/${eventId}`))
-    // }
+    const handleRemoveProduct = (prodId) => {
+        deleteEventProduct(eventId, prodId)
+            .then(() => history.push(`/events/detail/${eventId}`))
+    }
 
     // this it to calculate the total amount spent for the even
-    const eventTotalCost = event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b)
+    const eventTotalCost = event.products?.length !== 0 ? event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b) : 0
     const overBudget = eventTotalCost - event.budget
     const underBudget = event.budget - eventTotalCost
 
@@ -63,9 +59,10 @@ export const EventDetail = () => {
                 {event.products?.map(product =>
                     <div key={product.id}>
                         <h4>{product?.name}</h4>
-                        {/* <div>{product?.price}</div>
+                        <div>{product?.price}</div>
                         <button className="btn btn-3" id={product.id}
-                            onClick={() => handleRemove(event.product)}>X</button> */}
+                            onClick={() => handleRemoveProduct(product.id)}>X</button>
+
                     </div>)}
             </div>
 

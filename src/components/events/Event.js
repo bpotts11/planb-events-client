@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export const Event = ({ event }) => {
-    const eventTotalCost = event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b)
+    const eventTotalCost = event.products?.length !== 0 ? event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b) : 0
 
     return (
         <section className="event">

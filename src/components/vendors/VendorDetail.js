@@ -45,6 +45,7 @@ export const VendorDetail = () => {
                 {vendorProducts?.map(product =>
                     <div key={product?.id}>
                         <h4>{product?.name} </h4>
+                        <div>{product?.description} </div>
                         <div>${product?.price}</div>
                         <button className="btn btn-primary"
                             onClick={(e) => handleAddProduct(e, product.id)}>

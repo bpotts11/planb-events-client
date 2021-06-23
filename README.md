@@ -10,8 +10,10 @@ npm install
 npm start 
 ```
 ### Features
-### ERD(./images/PlanBERD.png)
-### Wireframe(https://www.figma.com/file/f62kRtw9BQptjyxxGytDD3/PlanB-Events?node-id=16%3A54)
+### ERD
+![PlanB ERD](./images/PlanBERD.png)
+### Wireframe
+(https://www.figma.com/file/f62kRtw9BQptjyxxGytDD3/PlanB-Events?node-id=16%3A54)
 ### Support
 Fill out a support ticket if you discover any major bugs to address. 
 ### Roadmap
