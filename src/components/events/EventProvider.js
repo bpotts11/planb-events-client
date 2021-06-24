@@ -8,7 +8,7 @@ export const EventProvider = (props) => {
 
 
     const getEvents = () => {
-        return fetch("http://localhost:8000/events", {
+        return fetch("https://planb-events.herokuapp.com/events", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
             }
@@ -18,7 +18,7 @@ export const EventProvider = (props) => {
     }
 
     const getEventById = (id) => {
-        return fetch(`http://localhost:8000/events/${id}`, {
+        return fetch(`https://planb-events.herokuapp.com/events/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
             }
@@ -28,7 +28,7 @@ export const EventProvider = (props) => {
     }
 
     const addEvent = (eventObj) => {
-        return fetch("http://localhost:8000/events", {
+        return fetch("https://planb-events.herokuapp.com/events", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const EventProvider = (props) => {
     }
 
     const deleteEvent = event => {
-        return fetch(`http://localhost:8000/events/${event}`, {
+        return fetch(`https://planb-events.herokuapp.com/events/${event}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
@@ -50,7 +50,7 @@ export const EventProvider = (props) => {
     }
 
     const updateEvent = event => {
-        return fetch(`http://localhost:8000/events/${event.id}`, {
+        return fetch(`https://planb-events.herokuapp.com/events/${event.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

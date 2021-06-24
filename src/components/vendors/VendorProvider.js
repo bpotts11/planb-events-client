@@ -6,7 +6,7 @@ export const VendorProvider = (props) => {
     const [vendors, setVendors] = useState([])
 
     const getVendors = () => {
-        return fetch("http://localhost:8000/vendors", {
+        return fetch("https://planb-events.herokuapp.com/vendors", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
             }
@@ -16,7 +16,7 @@ export const VendorProvider = (props) => {
     }
 
     const getVendorById = (id) => {
-        return fetch(`http://localhost:8000/vendors/${id}`, {
+        return fetch(`https://planb-events.herokuapp.com/vendors/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
             }

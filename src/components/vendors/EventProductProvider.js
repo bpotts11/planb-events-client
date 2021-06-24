@@ -8,7 +8,7 @@ export const EventProductProvider = (props) => {
 
 
     const addEventProduct = (epObj) => {
-        return fetch(`http://localhost:8000/events/${epObj.eventId}/product`, {
+        return fetch(`https://planb-events.herokuapp.com/events/${epObj.eventId}/product`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const EventProductProvider = (props) => {
     }
 
     const deleteEventProduct = (eventId, productId) => {
-        return fetch(`http://localhost:8000/events/${eventId}/product`, {
+        return fetch(`https://planb-events.herokuapp.com/events/${eventId}/product`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

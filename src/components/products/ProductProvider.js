@@ -8,7 +8,7 @@ export const ProductProvider = (props) => {
 
     const getProducts = () => {
         if (localStorage.getItem("planb_vendorId")) {
-            return fetch("http://localhost:8000/products", {
+            return fetch("https://planb-events.herokuapp.com/products", {
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("planb_vendorId")}`
                 }
@@ -16,7 +16,7 @@ export const ProductProvider = (props) => {
                 .then(response => response.json())
                 .then(setProducts)
         } else {
-            return fetch("http://localhost:8000/products", {
+            return fetch("https://planb-events.herokuapp.com/products", {
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("planb_customerId")}`
                 }
@@ -28,7 +28,7 @@ export const ProductProvider = (props) => {
     }
 
     const getProductById = (id) => {
-        return fetch(`http://localhost:8000/products/${id}`, {
+        return fetch(`https://planb-events.herokuapp.com/products/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_vendorId")}`
             }
@@ -37,7 +37,7 @@ export const ProductProvider = (props) => {
     }
 
     const addProduct = (productObj) => {
-        return fetch("http://localhost:8000/products", {
+        return fetch("https://planb-events.herokuapp.com/products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const ProductProvider = (props) => {
     }
 
     const deleteProduct = product => {
-        return fetch(`http://localhost:8000/products/${product}`, {
+        return fetch(`https://planb-events.herokuapp.com/products/${product}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("planb_vendorId")}`
@@ -59,7 +59,7 @@ export const ProductProvider = (props) => {
     }
 
     const updateProduct = product => {
-        return fetch(`http://localhost:8000/products/${product.id}`, {
+        return fetch(`https://planb-events.herokuapp.com/products/${product.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
