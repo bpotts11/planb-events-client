@@ -19,10 +19,14 @@ npm install
 npm start 
 ```
 ## Server
--[ ] Run virtual environment
--[ ] Run migrations
+1. Run pipenv shell
+2. Run pipenv install
+
 ```
-python3 manage.py loaddata ?????? maybe do chmod to seed database and run migrations
+chmod utx seed.sh
+```
+```
+./seed_data.sh
 ```
 
 ```
