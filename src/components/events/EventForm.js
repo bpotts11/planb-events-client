@@ -3,7 +3,7 @@ import { EventContext } from "./EventProvider"
 import { useHistory, useParams } from 'react-router-dom'
 
 export const EventForm = () => {
-    const { getEvents, getEventById, addEvent, updateEvent, event, setEvent } = useContext(EventContext)
+    const { getEvents, getEventById, addEvent, updateEvent, singleEvent, setEvent } = useContext(EventContext)
 
     const [isLoading, setIsLoading] = useState(true);
     const { eventId } = useParams();
@@ -16,15 +16,17 @@ export const EventForm = () => {
 
     const handleControlledInputChange = (event) => {
         /* When changing a state object or array, always create a new one and change state instead of modifying current one */
-        const newEvent = { ...event }
+        const newEvent = { ...singleEvent }
         let selectedVal = event.target.value
         newEvent[event.target.name] = selectedVal
         setEvent(newEvent)
+        console.log('newEvent: ', newEvent);
     }
 
     const HandleSave = (e) => {
+        console.log('event.date: ', singleEvent.date);
         e.preventDefault()
-        const eventName = event.name
+        const eventName = singleEvent.name
         if (eventName === "") {
             window.alert("Please enter a name")
         } else {
@@ -32,17 +34,17 @@ export const EventForm = () => {
             {
                 eventId ?
                     updateEvent({
-                        id: event.id,
-                        name: event.name,
-                        date: event.date,
-                        budget: parseInt(event.budget)
+                        id: parseInt(eventId),
+                        name: singleEvent.name,
+                        date: singleEvent.date,
+                        budget: parseInt(singleEvent.budget)
                     })
                         .then(() => history.push('/customer'))
                     :
                     addEvent({
-                        name: event.name,
-                        date: event.date,
-                        budget: parseInt(event.budget)
+                        name: singleEvent.name,
+                        date: singleEvent.date,
+                        budget: parseInt(singleEvent.budget)
                     })
                         .then(() => history.push('/customer'))
             }
@@ -65,7 +67,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name of Event: </label>
-                    <input value={event?.name} type="text" name="name" required autoFocus className="form-control"
+                    <input value={singleEvent?.name} type="text" name="name" required autoFocus className="form-control"
                         placeholder="Event Name"
                         onChange={handleControlledInputChange}
                     />
@@ -75,7 +77,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date of Event:</label>
-                    <input value={event?.date} type="date" name="date" required className="form-control"
+                    <input value={singleEvent?.date} type="date" name="date" required className="form-control"
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -84,7 +86,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="budget">Budget: </label>
-                    <input value={event?.budget} type="text" name="budget" required className="form-control"
+                    <input value={singleEvent?.budget} type="text" name="budget" required className="form-control"
                         placeholder="Budget"
                         onChange={handleControlledInputChange}
                     />

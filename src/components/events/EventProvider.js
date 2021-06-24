@@ -4,7 +4,7 @@ export const EventContext = createContext()
 
 export const EventProvider = (props) => {
     const [events, setEvents] = useState([])
-    const [event, setEvent] = useState({})
+    const [singleEvent, setEvent] = useState({})
 
 
     const getEvents = () => {
@@ -36,7 +36,7 @@ export const EventProvider = (props) => {
             },
             body: JSON.stringify(eventObj)
         })
-            .then(res => res.json())
+            .then(getEvents)
     }
 
     const deleteEvent = event => {
@@ -62,7 +62,7 @@ export const EventProvider = (props) => {
 
     return (
         <EventContext.Provider value={{
-            events, event, getEvents, getEventById, addEvent, deleteEvent, updateEvent
+            events, singleEvent, setEvent, getEvents, getEventById, addEvent, deleteEvent, updateEvent
         }}>
             {props.children}
         </EventContext.Provider>
