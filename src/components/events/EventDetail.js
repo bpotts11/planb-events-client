@@ -5,7 +5,7 @@ import { Link, useHistory, useParams } from "react-router-dom"
 import { EventProductContext } from "../vendors/EventProductProvider"
 
 export const EventDetail = () => {
-    const { getEventById, deleteEvent, event } = useContext(EventContext)
+    const { getEventById, deleteEvent, singleEvent } = useContext(EventContext)
     const { deleteEventProduct } = useContext(EventProductContext)
     const { getProducts } = useContext(ProductContext)
     const { eventId } = useParams();
@@ -39,24 +39,24 @@ export const EventDetail = () => {
     }
 
     // this it to calculate the total amount spent for the even
-    const eventTotalCost = event.products?.length !== 0 ? event.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b) : 0
-    const overBudget = eventTotalCost - event.budget
-    const underBudget = event.budget - eventTotalCost
+    const eventTotalCost = singleEvent.products?.length !== 0 ? singleEvent.products?.map(n => parseInt(n.price)).reduce((a, b) => a + b) : 0
+    const overBudget = eventTotalCost - singleEvent.budget
+    const underBudget = singleEvent.budget - eventTotalCost
 
 
     return (
 
         <section className="event">
 
-            <h3 className="event_name">{event.name}</h3>
-            <div className="event_date">Date: {new Date(event.date).toLocaleDateString()}</div>
-            <div className="event_budget">{eventTotalCost > event.budget ? <p>You are ${overBudget} over budget</p>
+            <h3 className="event_name">{singleEvent.name}</h3>
+            <div className="event_date">Date: {new Date(singleEvent.date).toLocaleDateString()}</div>
+            <div className="event_budget">{eventTotalCost > singleEvent.budget ? <p>You are ${overBudget} over budget</p>
                 : <p>You have ${underBudget} remaining budget</p>}</div>
-            <Link to={`/events/detail/${event.id}/vendor_list`}>
+            <Link to={`/events/detail/${singleEvent.id}/vendor_list`}>
                 Add to your event
             </Link>
             <div className="event_products">
-                {event.products?.map(product =>
+                {singleEvent.products?.map(product =>
                     <div key={product.id}>
                         <h4>{product?.name}</h4>
                         <div>{product?.price}</div>
@@ -72,8 +72,8 @@ export const EventDetail = () => {
                 <button className="button--close" onClick={handleClickDelete}>Confirm</button>
             </dialog>
 
-            <button onClick={() => { history.push(`/events/edit/${event.id}`) }}>Edit</button>
-            <button className="btn btn-3" id={event?.id}
+            <button onClick={() => { history.push(`/events/edit/${singleEvent.id}`) }}>Edit</button>
+            <button className="btn btn-3" id={singleEvent?.id}
                 onClick={handleDeleteWarning}>Delete</button>
 
 
