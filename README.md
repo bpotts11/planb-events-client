@@ -5,11 +5,12 @@
 2. Create an app that allows a user to plan multiple events at a time all while staying organized and on budget.
 
 ## What is PlanB Events?
-PlanB Events is an app that connects event planners to vendors who offer products/services.With PlanB, the planner is able to keep track of multiple events, while keeping track of their budget and having a point of contact for the vendor.
+PlanB Events is an app that connects event planners to vendors who offer products/services.With PlanB, the planner is able to keep track of multiple events, while keeping track of their budget and having a point of contact for the vendor. The vendor is able to connect customers looking for their service/products.
 
 ### Installation Instructions
 
 Clone planb-events-server repository (https://github.com/bpotts11/planb-events-server)
+
 Clone planb-events-client repository (https://github.com/bpotts11/planb-events-client)
 
 ## Client
@@ -21,6 +22,7 @@ npm start
 ## Server
 1. Run pipenv shell
 2. Run pipenv install
+3. Type the next 3 lines into to terminal
 
 ```
 chmod utx seed.sh
