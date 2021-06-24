@@ -65,7 +65,7 @@ Feel free to fork the repository and make pull requests. That said, I have no pl
 [Brittney Potts](https://github.com/bpotts11)
 
 Special thanks to  
-[Scott Silver](https://github.com/Scott47)
+[Scott Silver](https://github.com/Scott47) &
 [Hannah Hall](https://github.com/hannahhall)
 for all of the help and support on this project
 
