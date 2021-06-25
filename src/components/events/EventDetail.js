@@ -47,19 +47,20 @@ export const EventDetail = () => {
     return (
 
         <section className="event">
-
-            <h3 className="event_name">{singleEvent.name}</h3>
-            <div className="event_date">Date: {new Date(singleEvent.date).toLocaleDateString()}</div>
-            <div className="event_budget">{eventTotalCost > singleEvent.budget ? <p>You are ${overBudget} over budget</p>
-                : <p>You have ${underBudget} remaining budget</p>}</div>
-            <Link to={`/events/detail/${singleEvent.id}/vendor_list`}>
+            <div className="eventDetail__info">
+                <h3 className="event_name">{singleEvent.name}</h3>
+                <div className="event_date">{new Date(singleEvent.date).toLocaleDateString()}</div>
+                <div className="event_budget">{eventTotalCost > singleEvent.budget ? <p className="overBudget">${overBudget} over budget</p>
+                    : <p>${underBudget} remaining of budget</p>}</div>
+            </div>
+            <Link className="addLink" to={`/events/detail/${singleEvent.id}/vendor_list`}>
                 Add to your event
             </Link>
-            <div className="event_products">
+            <div>
                 {singleEvent.products?.map(product =>
-                    <div key={product.id}>
-                        <h4>{product?.name}</h4>
-                        <div>{product?.price}</div>
+                    <div className="event_products" key={product.id}>
+                        <h4>{product.name}</h4>
+                        <div>{product.price}</div>
                         <button className="btn btn-3" id={product.id}
                             onClick={() => handleRemoveProduct(product.id)}>X</button>
 

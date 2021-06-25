@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    justify-content: center;
+    margin: 0;
+    /* height: 200px; */
+    height: auto;
+}
+
+.navbar__item:hover {
+    font-weight: bold;
+}
+.navbar li {
+    align-self: flex-end;
+    margin-bottom: 50px;
+}

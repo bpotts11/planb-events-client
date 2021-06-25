@@ -1,0 +1,17 @@
+.regContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 700px;
+}
+.regbutton{
+    padding: 4em;
+}
+
+.logoContainer {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    justify-content: center;
+    margin: 0;
+    height: 200px;
+}

@@ -1,0 +1,59 @@
+.eventCard {
+    width: 250px;
+    height: 175px;
+    margin: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 2px #557a95 solid;
+    padding: inherit;
+    box-shadow: 3px 3px #5d5c61;
+}
+
+.events{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.eventCard__info{
+    margin: 0;
+    text-align: left;
+}
+
+.eventDetail__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event{
+    margin: 3em;
+}
+
+.event_products{
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 5px;
+    border: 2px #557a95 solid;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+    padding: .5em 1.5em;
+    box-shadow: 3px 3px #5d5c61;
+}
+
+.addLink{
+    font-size: 1.25em;
+}
+
+.overBudget{
+    color: #9a3232;
+    text-transform: uppercase;
+    font-size: 1.25em;
+}
