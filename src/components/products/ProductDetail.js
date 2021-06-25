@@ -35,10 +35,11 @@ export const ProductDetail = () => {
     return (
 
         <section className="product">
-
-            <h3 className="product_name">{product.name}</h3>
-            <div className="product_price">${product.price}</div>
-            <div className="product_description">{product.description}</div>
+            <div className="product_products">
+                <h3 className="product_name">{product.name}</h3>
+                <div className="product_price">${product.price}</div>
+                <div className="product_description">{product.description}</div>
+            </div>
 
             <dialog className="dialog dialog--auth" ref={deleteWarning}>
                 <div>Are you sure you want to delete this product?</div>

@@ -1,0 +1,49 @@
+.vendorCard {
+    width: 250px;
+    height: 175px;
+    margin: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;;
+    border: 2px #557a95 solid;
+    padding: inherit;
+    box-shadow: 3px 3px #5d5c61;
+}
+
+.vendors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.vendorCard__info{
+    margin: 0;
+    text-align: center;
+}
+
+.vendorDetail__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vendor{
+    margin: 3em;
+}
+
+.vendor_products{
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 5px;
+    border: 2px #557a95 solid;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+    padding: .5em 1.5em;
+    box-shadow: 3px 3px #5d5c61;
+}

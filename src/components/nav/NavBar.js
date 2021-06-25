@@ -1,28 +1,22 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
+import Logo from "./planBlogo.png"
 
 export const NavBar = () => {
 
     return (
         <>
             <div className="header">
-                <ul className="navbar">
-                    {/* <li className="logo">
-                    <img className="navbar__logo" src={Logo} />
-                    <h2 className="rare__title">Rare Publishing</h2>
-                </li> */}
-                    <li className="navbar__item active">
-                        {localStorage.getItem("planb_customerId") ? <Link className="navbar__link" to="/customer">Events</Link>
-                            : <Link className="navbar__link" to="/vendor">Products</Link>}
-                    </li>
-                    {/* <li className="navbar__item active">
-                        <Link className="navbar__link" to="/allvendors">Vendors</Link>
-                    </li> */}
-                    <li className="navbar__item active">
+                <div className="navbar">
+                    <div className="navbar__item active">
+                        {localStorage.getItem("planb_customerId") ? <Link className="navbar__link" to="/customer"><img className="navbar__logo" src={Logo} /></Link>
+                            : <Link className="navbar__link" to="/vendor"><img className="navbar__logo" src={Logo} /></Link>}
+                    </div>
+                    <div className="navbar__item active logout">
                         <Link className="navbar__link" to="/logout">Log Out</Link>
-                    </li>
-                </ul>
+                    </div>
+                </div>
                 <hr></hr>
             </div>
         </>

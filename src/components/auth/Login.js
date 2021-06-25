@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
+import Logo from "../nav/planBlogo.png"
 
 export const Login = () => {
     const email = useRef()
@@ -51,7 +52,9 @@ export const Login = () => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>PlanB Events</h1>
+                    <div className="logoContainer">
+                        <img className="navbar__logo" src={Logo} />
+                    </div>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
